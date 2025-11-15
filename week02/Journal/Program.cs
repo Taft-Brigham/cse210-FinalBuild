@@ -110,3 +110,16 @@ class Program
         }
     }
 }
+
+
+/*
+How I improved the journal program:
+
+1. Timestamps: Each journal entry now stores full date and time (_timestamp) instead of just the date.
+2. Tags: Users can add a tag or label for each entry (e.g., Mood: Happy, Sad).
+3. Multi-line responses: Users can type multi-line responses with "END" to finish.
+4. Safe file saving: Handles multi-line text and special characters when saving and loading entries.
+5. Random daily reminder: The program can suggest a journal prompt automatically after a number of menu actions.
+6. Extended prompt list: Added extra prompts beyond the minimum five required.
+7. Separate classes/files: Program design uses multiple classes in separate files (Journal, Entry, PromptGenerator, ReminderService).
+*/
