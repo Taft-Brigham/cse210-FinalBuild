@@ -5,17 +5,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Stretch Challenge Explanation (Required for full 7 creativity points):
-        //
-        // CREATIVITY & EXCEEDING REQUIREMENTS:
-        // 1. Added a 4th activity: Gratitude Activity (new class with unique prompts and behavior)
-        // 2. Added session logging: Every completed activity is saved to "session_log.txt"
-        //    with timestamp, activity name, duration, and item count (for Listing) or reflection prompt.
-        // 3. Reflecting Activity removes questions after use (no repeats in one session)
-        // 4. Listing Activity only counts non-empty entries
-        // 5. All animations use backspace clearing for smooth console experience
-        // 6. Clean file-per-class structure and perfect naming/style
-
         List<Activity> activities = new List<Activity>
         {
             new BreathingActivity(),
@@ -84,3 +73,13 @@ class Program
         Console.ReadLine();
     }
 }
+
+
+// CREATIVITY & EXCEEDING REQUIREMENTS:
+        // 1. Added a 4th activity: Gratitude Activity 
+        // 2. Added session logging: Every completed activity is saved to "session_log.txt"
+        //    with timestamp, activity name, duration, and item count.
+        // 3. Reflecting Activity removes questions after use 
+        // 4. Listing Activity only counts non-empty entries
+        // 5. All animations use backspace clearing for smooth console experience
+        // 6. Clean file-per-class structure and perfect naming/style
