@@ -1,0 +1,93 @@
+// ReflectingActivity.cs
+using System;
+using System.Collections.Generic;
+
+public class ReflectingActivity : Activity
+{
+    private List<string> _prompts = new List<string>
+    {
+        "Think of a time when you stood up for someone else.",
+        "Think of a time when you did something really difficult.",
+        "Think of a time when you helped someone in need.",
+        "Think of a time when you did something truly selfless.",
+        "Think of a time when you overcame a fear.",
+        "Think of a time when you felt truly at peace."
+    };
+
+    private List<string> _questions = new List<string>
+    {
+        "Why was this experience meaningful to you?",
+        "Have you ever done anything like this before?",
+        "How did you get started?",
+        "How did you feel when it was complete?",
+        "What made this time different than other times?",
+        "What is your favorite thing about this experience?",
+        "What did you learn about yourself through this experience?",
+        "How can you keep this feeling throughout the day?"
+    };
+
+    public ReflectingActivity() 
+        : base("Reflecting Activity",
+               "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.")
+    {
+    }
+
+    public override void Run()
+    {
+        StartActivity();
+
+        Console.WriteLine("Consider the following prompt:\n");
+        string prompt = GetRandomPrompt();
+        Console.WriteLine($" --- {prompt} ---\n");
+        Console.WriteLine("When you have something in mind, press Enter to continue.");
+        Console.ReadLine();
+
+        Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
+        Console.Write("You may begin in: ");
+        ShowCountdown(6);
+        Console.Clear();
+
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+
+        while (DateTime.Now < endTime)
+        {
+            string question = GetRandomQuestion();
+            Console.Write($"> {question} ");
+            ShowSpinner(8);  // Gives user ~8 seconds to think per question
+            Console.WriteLine();
+
+            if (DateTime.Now.AddSeconds(10) > endTime) break; // Prevent overflow
+        }
+
+        EndActivity();
+    }
+
+    private string GetRandomPrompt()
+    {
+        Random rand = new Random();
+        return _prompts[rand.Next(_prompts.Count)];
+    }
+
+    private string GetRandomQuestion()
+    {
+        Random rand = new Random();
+        string question = _questions[rand.Next(_questions.Count)];
+        _questions.Remove(question); // Remove so it won't repeat in same session
+        if (_questions.Count == 0)
+        {
+            // Refill if we've used them all
+            _questions.AddRange(new List<string>
+            {
+                "Why was this experience meaningful to you?",
+                "Have you ever done anything like this before?",
+                "How did you get started?",
+                "How did you feel when it was complete?",
+                "What made this time different than other times?",
+                "What is your favorite thing about this experience?",
+                "What did you learn about yourself through this experience?",
+                "How can you keep this feeling throughout the day?"
+            });
+        }
+        return question;
+    }
+}
