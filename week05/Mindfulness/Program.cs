@@ -10,7 +10,7 @@ class Program
             new BreathingActivity(),
             new ReflectingActivity(),
             new ListingActivity(),
-            new GratitudeActivity()    // ← Bonus 4th activity!
+            new GratitudeActivity()    
         };
 
         while (true)

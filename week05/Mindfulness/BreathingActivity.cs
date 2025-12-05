@@ -18,7 +18,7 @@ public class BreathingActivity : Activity
         Console.WriteLine("Now breathe out slowly...");
         ShowCountdown(6);
 
-        int cycles = _duration / 11; // 5s in + 6s out = 11s per cycle
+        int cycles = _duration / 11; 
         int remaining = _duration % 11;
 
         for (int i = 0; i < cycles; i++)

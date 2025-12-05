@@ -53,10 +53,10 @@ public class ReflectingActivity : Activity
         {
             string question = GetRandomQuestion();
             Console.Write($"> {question} ");
-            ShowSpinner(8);  // Gives user ~8 seconds to think per question
+            ShowSpinner(8);  
             Console.WriteLine();
 
-            if (DateTime.Now.AddSeconds(10) > endTime) break; // Prevent overflow
+            if (DateTime.Now.AddSeconds(10) > endTime) break;
         }
 
         EndActivity();
@@ -72,10 +72,10 @@ public class ReflectingActivity : Activity
     {
         Random rand = new Random();
         string question = _questions[rand.Next(_questions.Count)];
-        _questions.Remove(question); // Remove so it won't repeat in same session
+        _questions.Remove(question); 
         if (_questions.Count == 0)
-        {
-            // Refill if we've used them all
+        { 
+        
             _questions.AddRange(new List<string>
             {
                 "Why was this experience meaningful to you?",

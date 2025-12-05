@@ -5,7 +5,7 @@ public class Activity
 {
     protected string _activityName;
     protected string _description;
-    protected int _duration; // in seconds
+    protected int _duration; 
 
     public string Name => _activityName;
 
@@ -31,7 +31,7 @@ public class Activity
         ShowSpinner(4);
 
         // Log the session
-        
+
         string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm} | {_activityName} | {_duration}s";
         File.AppendAllText("session_log.txt", logEntry + Environment.NewLine);
     }
